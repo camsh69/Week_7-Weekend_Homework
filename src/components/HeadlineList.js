@@ -1,7 +1,7 @@
 import React from 'react'
 import Headline from './Headline'
 
-const HeadlineList = ({headlines, index}) => {
+const HeadlineList = ({headlines}) => {
     
     const headlineNodes = headlines.map(headline => {
         return <Headline headline={headline} key={headline.id} />
@@ -9,7 +9,6 @@ const HeadlineList = ({headlines, index}) => {
     
     return (
         <div>
-            <h2>HeadlineList</h2>
             <ul>
                 {headlineNodes}
             </ul>
