@@ -1,9 +1,15 @@
 import React from 'react'
+import './Headline.css'
 
-const Headline= ({headline}) => {
+const Headline= ({headline, onHeadlineClick}) => {
+
+    const handleClick = () => {
+        onHeadlineClick(headline.webUrl)
+    } 
+
     return (
-        <li>
-            <a href={headline.webUrl}>{headline.webTitle}</a>
+        <li onClick={handleClick}>
+        {headline.webTitle}
             <p></p>
         </li>
     )

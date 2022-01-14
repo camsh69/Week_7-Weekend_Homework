@@ -1,0 +1,30 @@
+.main-container {
+  background-color: lightgrey;
+  border-radius: 5%;
+  box-shadow: 3px 3px gray;
+  width: 500px;
+  margin-top: 3rem;
+  margin-right: auto;
+  margin-left: auto;
+  border: 1px solid;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+h1 {
+  font-size: xx-large;
+  text-align: center;
+  color: black;
+}
+
+.results {
+  background-color: whitesmoke;
+  border-radius: 5%;
+  padding: 1rem;
+  border: 1px solid;
+  margin-bottom: 2rem;
+}
+
+.search {
+  text-align: center;
+}

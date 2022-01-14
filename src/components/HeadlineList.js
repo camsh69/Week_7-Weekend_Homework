@@ -1,18 +1,16 @@
 import React from 'react'
 import Headline from './Headline'
 
-const HeadlineList = ({headlines}) => {
+const HeadlineList = ({headlines, onHeadlineClick}) => {
     
     const headlineNodes = headlines.map(headline => {
-        return <Headline headline={headline} key={headline.id} />
+        return <Headline headline={headline} key={headline.id} onHeadlineClick={onHeadlineClick}/>
     })
     
     return (
-        <div>
             <ul>
                 {headlineNodes}
             </ul>
-        </div>
     )
 }
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import HeadlineList from '../components/HeadlineList'
 import TopicSearch from '../components/TopicSearch'
+import './HeadlineContainer.css'
 
 
 const HeadlineContainer = () => {
@@ -10,10 +11,8 @@ const HeadlineContainer = () => {
     const [headlines, setHeadlines] = useState([]);
     const [headlineTopic, setHeadlineTopic] = useState("")
 
-    const getHeadlines = query => {
-        if (!query) {
-            query = defaultTopic;
-        }
+    const getHeadlines = topic => {
+        const query = topic ? topic : defaultTopic;
         const url = `https://content.guardianapis.com/search?q=${query}&format=json&api-key=test`;
         setHeadlineTopic(query);
         fetch(url)
@@ -21,21 +20,20 @@ const HeadlineContainer = () => {
         .then(data => setHeadlines(data.response.results));
     }
 
-    useEffect(() => {
-        getHeadlines()
-    }, [])
-
-    const searchTopic = (newTopic) => {
-        getHeadlines(newTopic);
-    }
-
+    useEffect(() => getHeadlines(), []);
 
     return (
-        <div>
+        <div className='main-container'>
             <h1>Guardian Headlines</h1>
-            <TopicSearch onTopicSearchSubmit={topic => searchTopic(topic)}/>
+            <div className='search'>
+            <TopicSearch onTopicSearchSubmit={newTopic => getHeadlines(newTopic)}/>
+            </div>
+            <hr></hr>
             <h2>Top Searches for {headlineTopic}</h2>
-            <HeadlineList headlines={headlines} />
+            <div className='results'>
+            <HeadlineList headlines={headlines} onHeadlineClick={url => window.open(url)}/>
+            </div>
+            
         </div>
     )
 }
