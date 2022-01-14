@@ -1,10 +1,11 @@
 import React from 'react'
 
-const Headline= () => {
+const Headline= ({headline}) => {
     return (
-        <div>
-            <p>I am a headline</p>
-        </div>
+        <li>
+            <a href={headline.webUrl}>{headline.webTitle}</a>
+            <p></p>
+        </li>
     )
 }
 
