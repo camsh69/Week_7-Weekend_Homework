@@ -17,6 +17,10 @@ h1 {
   color: black;
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
 .results {
   background-color: whitesmoke;
   border-radius: 5%;

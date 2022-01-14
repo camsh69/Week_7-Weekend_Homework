@@ -23,18 +23,17 @@ const HeadlineContainer = () => {
     useEffect(() => getHeadlines(), []);
 
     return (
-        <div className='main-container'>
+        <section className='main-container'>
             <h1>Guardian Headlines</h1>
             <div className='search'>
             <TopicSearch onTopicSearchSubmit={newTopic => getHeadlines(newTopic)}/>
             </div>
             <hr></hr>
-            <h2>Top Searches for {headlineTopic}</h2>
+            <h2>Top Searches for <span className='capitalize'>{headlineTopic}:</span></h2>
             <div className='results'>
             <HeadlineList headlines={headlines} onHeadlineClick={url => window.open(url)}/>
             </div>
-            
-        </div>
+        </section>
     )
 }
 

@@ -9,12 +9,8 @@ const TopicSearch = ({onTopicSearchSubmit}) =>  {
     const handleSearch = event => {
         event.preventDefault();
 
-        const trimmedTopic = topic.trim();
-        if(!trimmedTopic) {return}
-        const topicToSearch = trimmedTopic.toLowerCase()
-        .split(' ')
-        .map((string) => string.charAt(0).toUpperCase() + string.substring(1))
-        .join(' ');
+        const topicToSearch = topic.trim();
+        if(!topicToSearch) {return}
         
         onTopicSearchSubmit(topicToSearch);
 
