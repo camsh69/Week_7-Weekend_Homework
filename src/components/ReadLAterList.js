@@ -1,9 +1,9 @@
 import React from 'react'
 import ReadLaterHeadline from './ReadLaterHeadline';
 
-const ReadLAterList = ({readLater, onHeadlineClick,})=> {
+const ReadLaterList = ({readLater, onHeadlineClick, headlineRemove})=> {
 
-    const readLaterList = readLater.map(headline => <ReadLaterHeadline headline={headline} key={headline.id} onHeadlineClick={onHeadlineClick} />)
+    const readLaterList = readLater.map(headline => <ReadLaterHeadline headline={headline} key={headline.id} onHeadlineClick={onHeadlineClick} headlineRemove={headlineRemove} />)
 
     return (
         <ul>
@@ -12,4 +12,4 @@ const ReadLAterList = ({readLater, onHeadlineClick,})=> {
     )
 }
 
-export default ReadLAterList;
+export default ReadLaterList;

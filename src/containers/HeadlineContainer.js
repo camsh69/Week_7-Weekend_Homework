@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import HeadlineList from '../components/HeadlineList'
-import ReadLAterList from '../components/ReadLAterList'
+import ReadLaterList from '../components/ReadLaterList'
 import TopicSearch from '../components/TopicSearch'
 import icon from '../img/guardian-icon.jpeg'
 import './HeadlineContainer.css'
@@ -30,12 +30,17 @@ const HeadlineContainer = () => {
 
     useEffect(() => getHeadlines(), []);
 
-    const addToReadLater = addHeadline => {
+    const addToReadLater = headline => {
 
-        if (!readLater.includes(addHeadline)){
-        const updatedReadLater = [...readLater, addHeadline];
+        if (!readLater.includes(headline)){
+        const updatedReadLater = [...readLater, headline];
         setReadLater(updatedReadLater);
         }
+    }
+
+    const removeFromReadLAter = headline => {
+        const updatedReadLater = readLater.filter(item => item !== headline);
+        setReadLater(updatedReadLater);
     }
 
     return (
@@ -62,7 +67,7 @@ const HeadlineContainer = () => {
             <h2>Read Later:</h2>
 
             <div className = 'results'>
-                <ReadLAterList readLater={readLater} onHeadlineClick={url => window.open(url)} />
+                <ReadLaterList readLater={readLater} onHeadlineClick={url => window.open(url)}  headlineRemove={headline => removeFromReadLAter(headline)}/>
             </div>
 
         </section>

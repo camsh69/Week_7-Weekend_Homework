@@ -1,11 +1,8 @@
 import React from 'react'
 
-const RemoveFromList = () => {
+const RemoveFromList = ({headline, headlineRemove}) => {
     
-    const handleOnClick = () => {
-
-        return null
-    }
+    const handleOnClick = () => headlineRemove(headline);
 
     return (
         <button className='remove' onClick={handleOnClick}>-</button>
