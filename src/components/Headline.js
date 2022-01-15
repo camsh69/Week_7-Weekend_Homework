@@ -1,6 +1,6 @@
 import React from 'react'
 import AddToList from './AddToList'
-import './Headline.css'
+import './Component.css'
 
 const Headline= ({headline, onHeadlineClick, headlineAdd}) => {
 

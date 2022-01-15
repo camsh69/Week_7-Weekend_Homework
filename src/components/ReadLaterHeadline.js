@@ -1,6 +1,6 @@
 import React from 'react'
 import RemoveFromList from './RemoveFromList'
-import './Headline.css'
+import './Component.css'
 
 const Headline= ({headline, onHeadlineClick, headlineRemove}) => {
 
