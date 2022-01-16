@@ -3,6 +3,7 @@ import HeadlineList from '../components/HeadlineList'
 import ReadLaterList from '../components/ReadLaterList'
 import TopicSearch from '../components/TopicSearch'
 import { Chart } from "react-google-charts";
+import ChartOptions from '../components/ChartOptions';
 import './HeadlineContainer.css'
 
 
@@ -43,11 +44,11 @@ const HeadlineContainer = () => {
         setReadLater(updatedReadLater);
     }
 
-    const parseData = () => {
+    const parseSectionData = () => {
         const sections = headlines.map(section => section.sectionName);
 
         const uniqueItemsArray = [...sections].sort()
-        .filter((item, position, array) => !position || item != array[position -1]);
+        .filter((item, position, array) => !position || item !== array[position -1]);
         
         const count = (array, value) => array.filter(item => (item === value)).length;
 
@@ -59,7 +60,7 @@ const HeadlineContainer = () => {
 
         const combinedArray = [];
         for (let i = 0; i < uniqueItemsArray.length; i++) {
-                combinedArray.push(Array(uniqueItemsArray[i], countArray[i]))
+                combinedArray.push([uniqueItemsArray[i], countArray[i]])
         }
 
         combinedArray.unshift(["Section", "Number of articles"]);
@@ -67,26 +68,23 @@ const HeadlineContainer = () => {
         return combinedArray;
     }
 
-    
-    const data = parseData();
+    const chartData = parseSectionData();
 
-    
-    // [
-    //     ["Subject", "Number of articles"],
-    //     ["Politics", 4],
-    //     ["World News", 2],
-    //     ["UK News", 3],
-    //     ["Environment", 1],
-    //   ];
+    const [pieHole, setPieHole] = useState(0);
+    const [is3D, setIs3D] = useState(false);
 
-      const options = {
+    const updatePieHole = pieHole => pieHole ? setPieHole(0.4) : setPieHole(0);
+    
+    const updateIs3D = is3D => is3D ? setIs3D(true) : setIs3D(false);
+
+    const chartOptions = {
         title: "Headline by News Section",
-        pieHole: 0,
-        is3D: false
-      };
+        pieHole: pieHole,
+        is3D: is3D
+    };
 
     return (
-        <>
+        
         <section className='main-container'>
             <div className='app-container'>
                 <div className='header'>
@@ -113,19 +111,14 @@ const HeadlineContainer = () => {
                 </div>
             </div>
 
-        
-
-        <div className='chart'>
-                <Chart
-            chartType="PieChart"
-            data={data}
-            options={options}
-            width={"100%"}
-            height={"400px"}
-            />
-        </div>
+            <div className='chart'>
+                <Chart chartType="PieChart" data={chartData} width="100%" height="400px" options={chartOptions}/>
+                <div className="chartButtons">
+                    <ChartOptions selectDonut={value => updatePieHole(value)} select3D={value => updateIs3D(value)}/>
+                </div> 
+            </div>
         </section>
-        </>
+        
     )
 }
 

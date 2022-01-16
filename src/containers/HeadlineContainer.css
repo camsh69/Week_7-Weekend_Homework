@@ -78,3 +78,7 @@ input[type="text"] {
   box-sizing: border-box;
   box-shadow: 0px 6px 8px -7px #404059;
 }
+
+.chartButtons {
+  text-align: center;
+}
