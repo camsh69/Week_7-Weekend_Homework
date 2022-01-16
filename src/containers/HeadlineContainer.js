@@ -38,11 +38,13 @@ const HeadlineContainer = ({defaultTopic, chartTableColumns, chartTitle}) => {
     }
 
     const removeFromReadLAter = headline => {
+
         const updatedReadLater = readLater.filter(item => item !== headline);
         setReadLater(updatedReadLater);
     }
 
     const parseSectionData = () => {
+        
         const sections = headlines.map(section => section.sectionName);
 
         const uniqueItemsArray = [...sections].sort()
@@ -114,7 +116,7 @@ const HeadlineContainer = ({defaultTopic, chartTableColumns, chartTitle}) => {
                 </div> 
                     <Chart chartType="PieChart" data={chartData} width="100%" height="400px" options={chartOptions}/>
             </div>
-            
+
         </section>
         
     )

@@ -1,19 +1,22 @@
-import React, {useState } from 'react'
+import React from 'react'
 
 const ChartOptions = ({selectDonut, select3D}) => {
 
     const handleNormalClick = () => {
+
         selectDonut(false);
         select3D(false);
     }
 
     const handleDonutClick = () => {
+
         selectDonut(true);
         select3D(false);
 
     }
 
     const handleIs3DClick = () => {
+        
         selectDonut(false);
         select3D(true);
     }
