@@ -1,5 +1,6 @@
 .main-container {
   display: flex;
+  flex-flow: row wrap;
 }
 
 .app-container {
@@ -15,7 +16,7 @@
   padding-right: 2rem;
 }
 
-.chart {
+.chart-container {
   width: 630px;
   margin-top: 3rem;
   margin-right: auto;
@@ -79,6 +80,6 @@ input[type="text"] {
   box-shadow: 0px 6px 8px -7px #404059;
 }
 
-.chartButtons {
+/* .chartButtons {
   text-align: center;
-}
+} */

@@ -7,9 +7,7 @@ import ChartOptions from '../components/ChartOptions';
 import './HeadlineContainer.css'
 
 
-const HeadlineContainer = () => {
-
-    const defaultTopic = 'UK';
+const HeadlineContainer = ({defaultTopic, chartTableColumns, chartTitle}) => {
 
     const [headlines, setHeadlines] = useState([]);
 
@@ -63,7 +61,7 @@ const HeadlineContainer = () => {
                 combinedArray.push([uniqueItemsArray[i], countArray[i]])
         }
 
-        combinedArray.unshift(["Section", "Number of articles"]);
+        combinedArray.unshift(chartTableColumns);
 
         return combinedArray;
     }
@@ -71,6 +69,7 @@ const HeadlineContainer = () => {
     const chartData = parseSectionData();
 
     const [pieHole, setPieHole] = useState(0);
+
     const [is3D, setIs3D] = useState(false);
 
     const updatePieHole = pieHole => pieHole ? setPieHole(0.4) : setPieHole(0);
@@ -78,7 +77,7 @@ const HeadlineContainer = () => {
     const updateIs3D = is3D => is3D ? setIs3D(true) : setIs3D(false);
 
     const chartOptions = {
-        title: "Headline by News Section",
+        title: chartTitle,
         pieHole: pieHole,
         is3D: is3D
     };
@@ -86,10 +85,8 @@ const HeadlineContainer = () => {
     return (
         
         <section className='main-container'>
-            <div className='app-container'>
-                <div className='header'>
-                </div>
 
+            <div className='app-container'>
                 <h1>Guardian Headlines</h1>
 
                 <div className='search'>
@@ -111,12 +108,13 @@ const HeadlineContainer = () => {
                 </div>
             </div>
 
-            <div className='chart'>
-                <Chart chartType="PieChart" data={chartData} width="100%" height="400px" options={chartOptions}/>
+            <div className='chart-container'>
                 <div className="chartButtons">
                     <ChartOptions selectDonut={value => updatePieHole(value)} select3D={value => updateIs3D(value)}/>
                 </div> 
+                    <Chart chartType="PieChart" data={chartData} width="100%" height="400px" options={chartOptions}/>
             </div>
+            
         </section>
         
     )
